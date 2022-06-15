@@ -39,7 +39,8 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, 'home.html', {'fname': fname})
+            messages.success(request, 'You are IN')
+            return redirect('home')
         else:
             messages.error(request, 'Bad Credentials')
             return redirect('home')
